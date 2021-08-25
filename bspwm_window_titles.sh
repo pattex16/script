@@ -1,0 +1,1 @@
+/home/selz/.config/bspwm/bspwm_window_titles.sh

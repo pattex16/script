@@ -1,0 +1,2 @@
+#!/bin/sh
+[[ $(pidof xfce4-clipman-history ) ]] && pkill xfce4-clipman-h || xfce4-clipman-history

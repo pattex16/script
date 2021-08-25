@@ -1,0 +1,6 @@
+#!/bin/sh
+tmux rename-window "pacman -Syu"
+tmux set-window-option window-status-current-style 'fg=black bg=green'
+tmux set-window-option window-status-style 'fg=green'
+pikaur -Syyu
+

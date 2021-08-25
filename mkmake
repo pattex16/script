@@ -1,0 +1,21 @@
+#!/bin/bash
+
+[[ -z $1 ]] && fold=$(date "+%Y%m%d-%H%M%S") || fold=$1
+
+mkdir $fold
+
+if [[ -d $fold ]]; then
+
+  # mkdir $fold/lib
+  touch $fold/Makefile
+  touch $fold/.c
+
+  echo -e "program:\n\tgcc main.c -o main.out\n\ttmux split-window 'zsh -c \"./main.out ; echo ; echo main finished ; read\"'" >> $fold/Makefile
+
+  echo -e "#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n#include <string.h>\n\nint main(int argc, char* argv[])\n{\n\treturn 0;\n}" >> $fold/main.c
+
+  cd $fold
+  vim main.c
+else
+  echo "error creating $fold"
+fi

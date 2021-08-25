@@ -1,0 +1,14 @@
+#!/bin/sh
+
+if [ $# -eq 0 ]
+  then
+google-chrome-stable %U --enable-features=WebUIDarkMode --force-dark-mode --force-device-scale-factor=1.2
+else
+  args=""
+for var in "$@"
+do
+  args="$args $var"
+done
+
+google-chrome-stable %U --enable-features=WebUIDarkMode --force-dark-mode --force-device-scale-factor=1.2 $args
+fi

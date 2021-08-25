@@ -1,0 +1,42 @@
+#!/bin/zsh
+
+# name
+if [ -z "$1" ]
+then
+  name=$(date '+%Y')_$(date '+%m')_$(date '+%d')-$(date '+%H')_$(date '+%M')_$(date '+%S').c
+else
+  name=$1.c
+  dir=$1
+fi
+
+# dir
+if [ -z "$2" ]
+then
+  if [[ -a $dir/$name ]];
+  then
+    vi $dir/$name
+  else
+    mkdir $dir
+    touch $dir/$name
+    touch $dir/Makefile
+    cd $dir
+    echo "program:\n\tgcc $name -o $dir.out\n\ttmux split-window \"zsh -c './$dir.out; echo ; echo finished ; read;'\"" > Makefile
+    echo '#include <stdio.h>\n#include <string.h>\n#include <stdlib.h>\n#include <math.h>\n#include <stdbool.h>\n#include <limits.h>\n\nint main(int argc, char* argv[])\n{\n  \n  return 0;\n}\n' > $name
+    vi $name
+  fi
+else
+  dir=$2
+  if [[ -a $dir/$name ]];
+  then
+    vi $dir/$name
+  else
+    mkdir $dir
+    touch $dir/$name
+    touch $dir/Makefile
+    cd $dir
+    echo "program:\n\tgcc $name -o $dir.out\n\ttmux split-window \"zsh -c './$dir.out; echo ; echo finished ; read;'\"" > Makefile
+    echo '#include <stdio.h>\n#include <string.h>\n#include <stdlib.h>\n#include <math.h>\n#include <stdbool.h>\n#include <limits.h>\n\nint main(int argc, char* argv[])\n{\n  \n  return 0;\n}\n' > $name
+    vi $name
+  fi
+fi
+

@@ -1,0 +1,2 @@
+#!/bin/sh
+tmux rename-window 'l-serv'; tmux set-window-option window-status-current-style 'fg=black bg=red' ;tmux set-window-option window-status-style 'fg=red' ; live-server ~/source/webdev/geometry .

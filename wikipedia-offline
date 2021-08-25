@@ -1,0 +1,13 @@
+#!/bin/bash
+ans=$(zenity --info --title 'Kiwix Server' \
+    --text 'Kiwix Server' \
+    --ok-label Close\
+    --extra-button Start --extra-button Stop \
+    --timeout 3)
+
+if [[ ${ans} == "Start" ]]; then
+  sudo kiwix-serve -p 85 /home/selz/Documents/Resources/kiwix/wikipedia-it_nopics.zim /home/selz/Documents/Resources/kiwix/wiktionary_it_all_nopic_2021-01.zim &
+  xdg-open http://localhost:85
+else
+  sudo pkill kiwix-serve
+fi
